@@ -18,10 +18,11 @@ from django.urls import path
 
 from TheTeam import vistas
 
-
+from .  import vistas
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('holi/',vistas.holi)
-    
+    url(r'^admin/',admin.site.urls)
+    url(r'^$',vistas.singIn()'),
+    url(r'^postsing/',vistas.postsing),
 
 ]

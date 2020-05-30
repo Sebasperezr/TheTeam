@@ -1,23 +1,25 @@
 """TheTeam Vistas."""
 #django
 from django.http import HttpResponse
+from django.shortcuts import render
+import pyrebase
 
-#utilidades
-from datetime import datetime
-import json
+config = {
 
-def holi1(request):
-    print(request)
-    now = datetime.now().strftime('%b %dth, %Y - %H:%M hrs')
-    return HttpResponse('Oh, La fecha es  {now}'.format(now=str(now)))
+  "apiKey": "AIzaSyB9iCZUG4_b6d9x0ZOLUzpO--E-RIZgWuw",
+  "authDomain": "theteambackend.firebaseapp.com",
+  "databaseURL": "https://theteambackend.firebaseio.com",
+  "projectId": "theteambackend",
+  "storageBucket": "theteambackend.appspot.com",
+  "messagingSenderId": "559754082260",
+  "appId": "1:559754082260:web:88c4
+}
+firebase = pyrebase.initialize_app(config)
+ auth = firebase.auth()
 
-def holi(request):
-    numbers = [int(i) for i in request.GET['numeros'].split(',')]
-    sorted_ints = sorted(numbers)
-    data= {
-        'status': 'ok',
-        'numbers': sorted_ints,
-        'message': 'Integers sorted successfully'
-    }
-    return HttpResponse(json.dumps(data), content_type='application/json')
-    
+ def singIn(request):
+#cambiar el nombre del archivo
+     return render(request,"singIn.html")
+
+def postsing(request):
+    return render(request,"welcome.html")
