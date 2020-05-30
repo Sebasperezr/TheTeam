@@ -12,7 +12,8 @@ config = {
   "projectId": "theteambackend",
   "storageBucket": "theteambackend.appspot.com",
   "messagingSenderId": "559754082260",
-  "appId": "1:559754082260:web:88c4
+   "appId": "1:559754082260:web:88c4de4f2e7205b2f64841",
+  "measurementId": "G-SJP9MBBQZW"
 }
 firebase = pyrebase.initialize_app(config)
  auth = firebase.auth()
