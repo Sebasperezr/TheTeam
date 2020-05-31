@@ -1,3 +1,9 @@
 from django.shortcuts import render
+from rest_framework import viewsets
+from .models import Actividad
+from .serializador import ActividadSerializador
 
-# Create your views here.
+
+class ActividadViewSet(viewsets.ModelViewSet):
+    serializer_class =ActividadSerializador
+    queryset = Actividad.objects.all()
