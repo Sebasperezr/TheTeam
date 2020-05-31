@@ -63,7 +63,14 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    
 ]
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000',
+    '127.0.0.1:3000',
+    'https://pwa-theteam.web.app/',
+    'http://localhost:4200/'
+)
 
 ROOT_URLCONF = 'TheTeam.urls'
 
