@@ -65,13 +65,13 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     
 ]
-CORS_ORIGIN_WHITELIST = (
+CORS_ORIGIN_WHITELIST = [
     'localhost:3000',
     '127.0.0.1:3000',
     'https://pwa-theteam.web.app/',
-    'http://localhost:4200/'
-)
+    'http://localhost:4200/']
 
+CORS_ORIGIN_ALLOW_ALL = True
 ROOT_URLCONF = 'TheTeam.urls'
 
 TEMPLATES = [
