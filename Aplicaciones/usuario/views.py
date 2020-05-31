@@ -1,3 +1,13 @@
+"""Aplicacioees.Usuario Vistas."""
 from django.shortcuts import render
+from rest_framework import viewsets
+from .models import usuario
+from .serializador import UsuarioSerializador
 
-# Create your views here.
+
+class UsuarioViewSet(viewsets.ModelViewSet):
+    serializer_class =UsuarioSerializador
+    queryset = usuario.objects.all()
+
+
+
