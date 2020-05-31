@@ -8,6 +8,7 @@ class Encuesta(models.Model):
         idActividad = models.CharField(max_length = 100)
         idRespuesta = models.CharField(max_length = 100 )
         idResultado = models.CharField(max_length = 100, blank = True, null = True )
+        
         def __str__(self):
             return self.pk
         
