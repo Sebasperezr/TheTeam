@@ -14,15 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 #from django.contrib import admin
+from django.contrib import admin
 from django.urls import path
+from django.shortcuts import render
 
-from TheTeam import vistas
+from rest_framework.routers import DefaultRouter
+from Aplicaciones.encuesta.views import EncuestaViewSet
 
-from .  import vistas
-urlpatterns = [
-    # path('admin/', admin.site.urls),
-    url(r'^admin/',admin.site.urls)
-    url(r'^$',vistas.singIn()'),
-    url(r'^postsing/',vistas.postsing),
+router = DefaultRouter()
+router.register(r'Aplicaciones.encuesta',EncuestaViewSet)
 
+urlpatterns = router.urls
+urlpatterns += [
+    path('admin/', admin.site.urls),
 ]

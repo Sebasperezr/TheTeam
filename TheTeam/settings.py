@@ -45,6 +45,11 @@ INSTALLED_APPS = [
     'Aplicaciones.actividad',
     'Aplicaciones.encuesta',
 
+    #instalaciones Externas
+    'rest_framework',
+    'corsheaders'
+
+
 ]
 
 MIDDLEWARE = [
@@ -62,7 +67,7 @@ ROOT_URLCONF = 'TheTeam.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,8 +88,13 @@ WSGI_APPLICATION = 'TheTeam.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'TheTeamBd' ,
+        'USER':'root',
+        'PASSWORD':'123456789',
+        'HOST':'localhost',
+        'PORT':'3306',
+        
     }
 }
 
@@ -111,9 +121,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
 
