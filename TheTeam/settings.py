@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'cidcs62)+6-2zlpaov8xarvnd7tq_2+3d1t8+!l*23=v(+zm9j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'TheTeam.urls'
@@ -85,18 +86,24 @@ WSGI_APPLICATION = 'TheTeam.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
+import dj_database_url
+from decouple import config
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME':'TheTeamBd' ,
-        'USER':'root',
-        'PASSWORD':'123456789',
-        'HOST':'localhost',
-        'PORT':'3306',
-        
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
+#DATABASES = {
+ #   'default': {
+  #      'ENGINE': 'django.db.backends.mysql',
+   #     'NAME':'TheTeamBd' ,
+    #    'USER':'root',
+     #   'PASSWORD':'123456789',
+      #  'HOST':'localhost',
+       # 'PORT':'3306',
+        
+   # }
+#}
 
 
 # Password validation
@@ -134,5 +141,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS =(
+    os.path.join(BASE_DIR, 'static')
+)
+
+
+STATICFILES_STORAGE ='whitenoise.storage.CompressedManifestStaticFilesStorage'
