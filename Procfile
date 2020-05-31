@@ -1,1 +1,1 @@
-web: gunicore TheTeam.wsgi
+web: gunicore TheTeam.wsgi --log-file -
